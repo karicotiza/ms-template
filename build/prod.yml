@@ -1,0 +1,20 @@
+name: ms
+
+services:
+  template:  # TODO: Change image name
+    container_name: ms-template  # TODO: Change container name
+    build: 
+      dockerfile: ./build/Dockerfile
+      context: ..
+      target: prod
+    restart: always
+    volumes:
+      - ../.env:/build/.env:ro
+    ports:
+      - '8000:8000'  # TODO: Change port
+    healthcheck:
+      test: [ "CMD", "curl", "http://localhost:8000/docs" ]
+      interval: 120s
+      timeout: 5s
+      retries: 5
+      start_period: 5s

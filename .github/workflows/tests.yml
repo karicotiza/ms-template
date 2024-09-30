@@ -1,0 +1,19 @@
+name: Tests
+
+on:
+  push:
+    branches: [ '**', '!main' ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-22.04  # TODO: Change runnner
+    steps:
+    - name: Pull the code
+      run: |  # TODO: Change path
+        cd /home
+        git pull
+
+    - name: Run all the tests
+      run: |  # TODO: Change path
+        cd /home
+        docker compose -f ./build/test.yml up --build

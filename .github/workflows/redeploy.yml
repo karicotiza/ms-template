@@ -1,0 +1,24 @@
+name: Redeploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-22.04  # TODO: Change runnner
+    steps:
+    - name: Pull the code
+      run: |  # TODO: Change path
+        cd /home
+        git pull
+
+    - name: Run all the tests
+      run: | # TODO: Change path
+        cd /home
+        docker compose -f ./build/test.yml up --build
+
+    - name: Build the code and run it
+      run: | # TODO: Change path
+        cd /home
+        docker compose -f ./build/prod.yml up --build  --detach

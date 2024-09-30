@@ -1,0 +1,10 @@
+fastapi==0.112.2
+mypy==1.11.2
+opentelemetry-distro==0.43b0
+opentelemetry-exporter-otlp==1.22.0
+pydantic-settings==2.5.2
+pytest==8.3.2
+schemathesis==3.35.2
+sentry-sdk[fastapi]==2.14.0
+uvicorn==0.30.6
+uvloop==0.20.0

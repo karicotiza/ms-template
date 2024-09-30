@@ -1,0 +1,32 @@
+name: ms-tests
+
+services:
+  template-tests:  # TODO: Change image name
+    container_name: ms-template-tests  # TODO: Change container name
+    build: 
+      dockerfile: ./build/Dockerfile
+      context: ..
+      target: test
+    volumes:
+      - ../.env:/build/.env:ro
+    entrypoint: [ "python", "-m", "pytest" ]
+
+  template-style:  # TODO: Change image name
+    container_name: ms-template-style  # TODO: Change container name
+    build: 
+      dockerfile: ./build/Dockerfile
+      context: ..
+      target: test
+    volumes:
+      - ../.env:/build/.env:ro
+    entrypoint: [ "python", "-m", "flake8" ]
+
+  template-types:  # TODO: Change image name
+    container_name: ms-template-types  # TODO: Change container name
+    build: 
+      dockerfile: ./build/Dockerfile
+      context: ..
+      target: test
+    volumes:
+      - ../.env:/build/.env:ro
+    entrypoint: [ "python", "-m", "mypy", "." ]
